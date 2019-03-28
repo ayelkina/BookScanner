@@ -1,26 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
+<android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        tools:openDrawer="start">
+        tools:context=".MainActivity">
 
-    <include
-            layout="@layout/app_bar_main"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+    <ImageView
+            android:layout_width="0dp"
+            android:layout_height="146dp" app:srcCompat="@drawable/green_background"
+            android:id="@+id/backgroundView"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+    <ImageButton
+            android:layout_width="120dp"
+            android:layout_height="120dp" app:srcCompat="@mipmap/open_camera"
+            android:background="@null"
+            android:id="@+id/cameraButton"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constrainedWidth="true"
+            android:scaleType="fitXY" android:adjustViewBounds="false" android:cropToPadding="false"
+            android:onClick="cameraBtnClicked"/>
 
-    <android.support.design.widget.NavigationView
-            android:id="@+id/nav_view"
+
+    <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:fitsSystemWindows="true"
-            app:headerLayout="@layout/nav_header_main"
-            app:menu="@menu/activity_main_drawer"/>
+            android:layout_height="wrap_content" app:srcCompat="@drawable/search_red"
+            android:id="@+id/searchButton"
+            android:background="@null" android:scaleType="fitXY"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/backgroundView" android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/searchInputText" android:layout_marginBottom="8dp"
+            android:onClick="searchBtnClicked"/>
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:ems="10"
+            android:id="@+id/searchInputText" android:hint="@string/search_for_a_book"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/searchButton"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/backgroundView" android:textColorLink="@android:color/black"/>
+    <ImageView
+            android:layout_width="167dp"
+            android:layout_height="252dp" app:srcCompat="@drawable/books24"
+            android:id="@+id/bookView"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/searchInputText"/>
+    <ImageButton
+            android:layout_width="151dp"
+            android:layout_height="232dp" app:srcCompat="@drawable/books_a_lot"
+            android:id="@+id/imageButton"
+            app:layout_constraintStart_toEndOf="@+id/bookView" android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/searchInputText" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:onClick="libraryClicked"/>
+    <TextView
+            android:text="@string/oh_hi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/helloText" app:layout_constraintStart_toStartOf="parent"
+            android:textSize="25sp"
+            android:textStyle="bold" android:textColor="@android:color/white"
+            android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/searchInputText"/>
 
-</android.support.v4.widget.DrawerLayout>
+</android.support.constraint.ConstraintLayout>

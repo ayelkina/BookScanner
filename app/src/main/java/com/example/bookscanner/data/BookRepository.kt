@@ -6,9 +6,8 @@ class BookRepository private constructor(private val bookDao: BookDao) {
         bookDao.addBook(book)
     }
 
-    fun getBooks() {
+    fun getBooks()  =
         bookDao.getBooks()
-    }
 
     companion object {
         @Volatile private var instance: BookRepository? = null
