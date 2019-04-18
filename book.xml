@@ -1,0 +1,526 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<GoodreadsResponse>
+<Request>
+<authentication>true</authentication>
+<key>
+<![CDATA[ 35Arndk48sAisvbD0kXcQ ]]>
+</key>
+<method>
+<![CDATA[ search_index ]]>
+</method>
+</Request>
+<search>
+<query>
+<![CDATA[ Harry ]]>
+</query>
+<results-start>1</results-start>
+<results-end>20</results-end>
+<total-results>44433</total-results>
+<source>Goodreads</source>
+<query-time-seconds>0.19</query-time-seconds>
+<results>
+<work>
+<id type="integer">4640799</id>
+<books_count type="integer">665</books_count>
+<ratings_count type="integer">5835165</ratings_count>
+<text_reviews_count type="integer">93733</text_reviews_count>
+<original_publication_year type="integer">1997</original_publication_year>
+<original_publication_month type="integer">6</original_publication_month>
+<original_publication_day type="integer">26</original_publication_day>
+<average_rating>4.46</average_rating>
+<best_book type="Book">
+<id type="integer">3</id>
+<title>
+Harry Potter and the Sorcerer's Stone (Harry Potter, #1)
+</title>
+<author>
+<id type="integer">1077326</id>
+<name>J.K. Rowling</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1474154022m/3.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1474154022s/3.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">2402163</id>
+<books_count type="integer">463</books_count>
+<ratings_count type="integer">2311624</ratings_count>
+<text_reviews_count type="integer">45371</text_reviews_count>
+<original_publication_year type="integer">1999</original_publication_year>
+<original_publication_month type="integer">7</original_publication_month>
+<original_publication_day type="integer">8</original_publication_day>
+<average_rating>4.55</average_rating>
+<best_book type="Book">
+<id type="integer">5</id>
+<title>
+Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)
+</title>
+<author>
+<id type="integer">1077326</id>
+<name>J.K. Rowling</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1499277281m/5.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1499277281s/5.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">6231171</id>
+<books_count type="integer">536</books_count>
+<ratings_count type="integer">2263255</ratings_count>
+<text_reviews_count type="integer">43198</text_reviews_count>
+<original_publication_year type="integer">1998</original_publication_year>
+<original_publication_month type="integer">7</original_publication_month>
+<original_publication_day type="integer">2</original_publication_day>
+<average_rating>4.41</average_rating>
+<best_book type="Book">
+<id type="integer">15881</id>
+<title>
+Harry Potter and the Chamber of Secrets (Harry Potter, #2)
+</title>
+<author>
+<id type="integer">1077326</id>
+<name>J.K. Rowling</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1474169725m/15881.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1474169725s/15881.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">3046572</id>
+<books_count type="integer">376</books_count>
+<ratings_count type="integer">2163720</ratings_count>
+<text_reviews_count type="integer">38153</text_reviews_count>
+<original_publication_year type="integer">2000</original_publication_year>
+<original_publication_month type="integer">7</original_publication_month>
+<original_publication_day type="integer">8</original_publication_day>
+<average_rating>4.55</average_rating>
+<best_book type="Book">
+<id type="integer">6</id>
+<title>
+Harry Potter and the Goblet of Fire (Harry Potter, #4)
+</title>
+<author>
+<id type="integer">1077326</id>
+<name>J.K. Rowling</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1292440310m/6.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1292440310s/6.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">2809203</id>
+<books_count type="integer">359</books_count>
+<ratings_count type="integer">2118559</ratings_count>
+<text_reviews_count type="integer">35018</text_reviews_count>
+<original_publication_year type="integer">2003</original_publication_year>
+<original_publication_month type="integer">6</original_publication_month>
+<original_publication_day type="integer">21</original_publication_day>
+<average_rating>4.48</average_rating>
+<best_book type="Book">
+<id type="integer">2</id>
+<title>
+Harry Potter and the Order of the Phoenix (Harry Potter, #5)
+</title>
+<author>
+<id type="integer">1077326</id>
+<name>J.K. Rowling</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1546910265m/2.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1546910265s/2.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">41335427</id>
+<books_count type="integer">21</books_count>
+<ratings_count type="integer">2067000</ratings_count>
+<text_reviews_count type="integer">33151</text_reviews_count>
+<original_publication_year type="integer">2005</original_publication_year>
+<original_publication_month type="integer">7</original_publication_month>
+<original_publication_day type="integer">16</original_publication_day>
+<average_rating>4.56</average_rating>
+<best_book type="Book">
+<id type="integer">1</id>
+<title>
+Harry Potter and the Half-Blood Prince (Harry Potter, #6)
+</title>
+<author>
+<id type="integer">1077326</id>
+<name>J.K. Rowling</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1361039191m/1.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1361039191s/1.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">48765776</id>
+<books_count type="integer">143</books_count>
+<ratings_count type="integer">547794</ratings_count>
+<text_reviews_count type="integer">60353</text_reviews_count>
+<original_publication_year type="integer">2016</original_publication_year>
+<original_publication_month type="integer">7</original_publication_month>
+<original_publication_day type="integer">31</original_publication_day>
+<average_rating>3.68</average_rating>
+<best_book type="Book">
+<id type="integer">29056083</id>
+<title>
+Harry Potter and the Cursed Child: Parts One and Two (Harry Potter, #8)
+</title>
+<author>
+<id type="integer">5042201</id>
+<name>John Tiffany</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1470082995m/29056083.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1470082995s/29056083.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">2962492</id>
+<books_count type="integer">111</books_count>
+<ratings_count type="integer">226505</ratings_count>
+<text_reviews_count type="integer">6922</text_reviews_count>
+<original_publication_year type="integer">2015</original_publication_year>
+<original_publication_month type="integer">12</original_publication_month>
+<original_publication_day type="integer">14</original_publication_day>
+<average_rating>4.74</average_rating>
+<best_book type="Book">
+<id type="integer">862041</id>
+<title>Harry Potter Series Box Set (Harry Potter, #1-7)</title>
+<author>
+<id type="integer">1077326</id>
+<name>J.K. Rowling</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1534298934m/862041.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1534298934s/862041.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">2963218</id>
+<books_count type="integer">106</books_count>
+<ratings_count type="integer">2190286</ratings_count>
+<text_reviews_count type="integer">58626</text_reviews_count>
+<original_publication_year type="integer">2007</original_publication_year>
+<original_publication_month type="integer">7</original_publication_month>
+<original_publication_day type="integer">21</original_publication_day>
+<average_rating>4.63</average_rating>
+<best_book type="Book">
+<id type="integer">136251</id>
+<title>
+Harry Potter and the Deathly Hallows (Harry Potter, #7)
+</title>
+<author>
+<id type="integer">1077326</id>
+<name>J.K. Rowling</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1474171184m/136251.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1474171184s/136251.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">48262</id>
+<books_count type="integer">48</books_count>
+<ratings_count type="integer">132301</ratings_count>
+<text_reviews_count type="integer">3765</text_reviews_count>
+<original_publication_year type="integer">1992</original_publication_year>
+<original_publication_month type="integer" nil="true"/>
+<original_publication_day type="integer" nil="true"/>
+<average_rating>4.09</average_rating>
+<best_book type="Book">
+<id type="integer">32508</id>
+<title>
+The Black Echo (Harry Bosch, #1; Harry Bosch Universe, #1)
+</title>
+<author>
+<id type="integer">12470</id>
+<name>Michael Connelly</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1344265342m/32508.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1344265342s/32508.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">2697052</id>
+<books_count type="integer">179</books_count>
+<ratings_count type="integer">90248</ratings_count>
+<text_reviews_count type="integer">7506</text_reviews_count>
+<original_publication_year type="integer">2007</original_publication_year>
+<original_publication_month type="integer" nil="true"/>
+<original_publication_day type="integer" nil="true"/>
+<average_rating>4.01</average_rating>
+<best_book type="Book">
+<id type="integer">9572203</id>
+<title>The Snowman (Harry Hole, #7)</title>
+<author>
+<id type="integer">904719</id>
+<name>Jo Nesbø</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1355881478m/9572203.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1355881478s/9572203.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">2902978</id>
+<books_count type="integer">93</books_count>
+<ratings_count type="integer">72669</ratings_count>
+<text_reviews_count type="integer">2712</text_reviews_count>
+<original_publication_year type="integer">2008</original_publication_year>
+<original_publication_month type="integer">5</original_publication_month>
+<original_publication_day type="integer">27</original_publication_day>
+<average_rating>3.33</average_rating>
+<best_book type="Book">
+<id type="integer">426775</id>
+<title>Chasing Harry Winston</title>
+<author>
+<id type="integer">3490</id>
+<name>Lauren Weisberger</name>
+</author>
+<image_url>
+https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png
+</image_url>
+<small_image_url>
+https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">1487876</id>
+<books_count type="integer">162</books_count>
+<ratings_count type="integer">74016</ratings_count>
+<text_reviews_count type="integer">3777</text_reviews_count>
+<original_publication_year type="integer">2000</original_publication_year>
+<original_publication_month type="integer" nil="true"/>
+<original_publication_day type="integer" nil="true"/>
+<average_rating>3.92</average_rating>
+<best_book type="Book">
+<id type="integer">465226</id>
+<title>The Redbreast (Harry Hole, #3)</title>
+<author>
+<id type="integer">904719</id>
+<name>Jo Nesbø</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1320540474m/465226.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1320540474s/465226.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">1994708</id>
+<books_count type="integer">183</books_count>
+<ratings_count type="integer">67437</ratings_count>
+<text_reviews_count type="integer">5201</text_reviews_count>
+<original_publication_year type="integer">1997</original_publication_year>
+<original_publication_month type="integer" nil="true"/>
+<original_publication_day type="integer" nil="true"/>
+<average_rating>3.54</average_rating>
+<best_book type="Book">
+<id type="integer">1991039</id>
+<title>Flaggermusmannen (Harry Hole, #1)</title>
+<author>
+<id type="integer">904719</id>
+<name>Jo Nesbø</name>
+</author>
+<image_url>
+https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png
+</image_url>
+<small_image_url>
+https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">13810543</id>
+<books_count type="integer">3</books_count>
+<ratings_count type="integer">16156</ratings_count>
+<text_reviews_count type="integer">1055</text_reviews_count>
+<original_publication_year type="integer">2008</original_publication_year>
+<original_publication_month type="integer">6</original_publication_month>
+<original_publication_day type="integer">11</original_publication_day>
+<average_rating>4.19</average_rating>
+<best_book type="Book">
+<id type="integer">8933944</id>
+<title>Harry Potter: The Prequel (Harry Potter, #0.5)</title>
+<author>
+<id type="integer">1077326</id>
+<name>J.K. Rowling</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1456894457m/8933944.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1456894457s/8933944.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">25807847</id>
+<books_count type="integer">67</books_count>
+<ratings_count type="integer">51543</ratings_count>
+<text_reviews_count type="integer">6839</text_reviews_count>
+<original_publication_year type="integer">2014</original_publication_year>
+<original_publication_month type="integer">4</original_publication_month>
+<original_publication_day type="integer">8</original_publication_day>
+<average_rating>4.04</average_rating>
+<best_book type="Book">
+<id type="integer">35066358</id>
+<title>The First Fifteen Lives of Harry August</title>
+<author>
+<id type="integer">7210024</id>
+<name>Claire North</name>
+</author>
+<image_url>
+https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png
+</image_url>
+<small_image_url>
+https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">457882</id>
+<books_count type="integer">111</books_count>
+<ratings_count type="integer">53200</ratings_count>
+<text_reviews_count type="integer">1943</text_reviews_count>
+<original_publication_year type="integer">1993</original_publication_year>
+<original_publication_month type="integer" nil="true"/>
+<original_publication_day type="integer" nil="true"/>
+<average_rating>4.07</average_rating>
+<best_book type="Book">
+<id type="integer">24244</id>
+<title>
+The Black Ice (Harry Bosch, #2; Harry Bosch Universe, #2)
+</title>
+<author>
+<id type="integer">12470</id>
+<name>Michael Connelly</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1372241876m/24244.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1372241876s/24244.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">11580916</id>
+<books_count type="integer">28</books_count>
+<ratings_count type="integer">51792</ratings_count>
+<text_reviews_count type="integer">548</text_reviews_count>
+<original_publication_year type="integer">2010</original_publication_year>
+<original_publication_month type="integer" nil="true"/>
+<original_publication_day type="integer" nil="true"/>
+<average_rating>4.49</average_rating>
+<best_book type="Book">
+<id type="integer">7952502</id>
+<title>Harry Potter: Film Wizardry</title>
+<author>
+<id type="integer">4941</id>
+<name>Brian Sibley</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1464452934m/7952502.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1464452934s/7952502.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">3023538</id>
+<books_count type="integer">165</books_count>
+<ratings_count type="integer">52222</ratings_count>
+<text_reviews_count type="integer">2457</text_reviews_count>
+<original_publication_year type="integer">2002</original_publication_year>
+<original_publication_month type="integer" nil="true"/>
+<original_publication_day type="integer" nil="true"/>
+<average_rating>3.98</average_rating>
+<best_book type="Book">
+<id type="integer">3522419</id>
+<title>Nemesis (Harry Hole, #4)</title>
+<author>
+<id type="integer">904719</id>
+<name>Jo Nesbø</name>
+</author>
+<image_url>
+https://images.gr-assets.com/books/1327312660m/3522419.jpg
+</image_url>
+<small_image_url>
+https://images.gr-assets.com/books/1327312660s/3522419.jpg
+</small_image_url>
+</best_book>
+</work>
+<work>
+<id type="integer">449477</id>
+<books_count type="integer">32</books_count>
+<ratings_count type="integer">51729</ratings_count>
+<text_reviews_count type="integer">1669</text_reviews_count>
+<original_publication_year type="integer">1995</original_publication_year>
+<original_publication_month type="integer">6</original_publication_month>
+<original_publication_day type="integer">1</original_publication_day>
+<average_rating>4.23</average_rating>
+<best_book type="Book">
+<id type="integer">49353</id>
+<title>
+The Last Coyote (Harry Bosch, #4; Harry Bosch Universe, #4)
+</title>
+<author>
+<id type="integer">12470</id>
+<name>Michael Connelly</name>
+</author>
+<image_url>
+https://s.gr-assets.com/assets/nophoto/book/111x148-bcc042a9c91a29c1d680899eff700a03.png
+</image_url>
+<small_image_url>
+https://s.gr-assets.com/assets/nophoto/book/50x75-a91bf249278a81aabab721ef782c4a74.png
+</small_image_url>
+</best_book>
+</work>
+</results>
+</search>
+</GoodreadsResponse>

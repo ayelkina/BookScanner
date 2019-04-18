@@ -1,5 +1,7 @@
 package com.example.bookscanner.data
 
+import com.example.bookscanner.Model.Book
+
 class BookRepository private constructor(private val bookDao: BookDao) {
 
     fun addBook(book: Book) {

@@ -2,6 +2,7 @@ package com.example.bookscanner.data
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
+import com.example.bookscanner.Model.Book
 
 class BookDao {
     private val bookList = mutableListOf<Book>()

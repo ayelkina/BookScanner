@@ -1,5 +1,5 @@
 package com.example.bookscanner.utilities
-import com.example.bookscanner.data.Book
+import com.example.bookscanner.Model.Book
 import io.reactivex.Observable
 import retrofit2.http.GET
 

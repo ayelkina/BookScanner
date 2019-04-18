@@ -1,2 +1,6 @@
 key: 35Arndk48sAisvbD0kXcQ
 secret: 83d6DkXk97dvPXvCkkV5uhPIRJMM6EgnG0MdSIh7Gw
+
+Azure:
+a4df142bc72d4440b3c3e6f7775aba1a
+82de716884af4bea95c0aff8edf66da5
