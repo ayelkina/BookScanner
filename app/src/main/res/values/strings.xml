@@ -28,4 +28,7 @@
     <string name="my_library">My library</string>
     <string name="importFoto">Import</string>
     <string name="libraryfragment">LibraryFragment</string>
+    <string name="title">Title</string>
+    <string name="author">Author</string>
+    <string name="rating">Rating</string>
 </resources>

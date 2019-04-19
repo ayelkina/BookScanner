@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import com.example.bookscanner.Model.Book
 import com.example.bookscanner.R
+import com.example.bookscanner.Services.Connector
 
 import kotlinx.android.synthetic.main.activity_main.*
 import org.w3c.dom.Document
@@ -29,20 +31,17 @@ class MainActivity : AppCompatActivity() {
         sendGetRequest()
     }
 
-    fun sendGetRequest() :Document {
-//            val xmlFile = File("book.xml")
+    fun sendGetRequest() :MutableList<Book>? {
+        val searchRequest = mutableListOf<String>()
+        searchRequest.add("złodziejka")
+        searchRequest.add("książek")
+        searchRequest.add("markus")
+        searchRequest.add("zusak")
 
-        val xmlFile =  File("https:////www.goodreads.com/search/index.xml?key=35Arndk48sAisvbD0kXcQ&q=Harry&Potter")
-//        URL("https://www.goodreads.com/search/index.xml?key=35Arndk48sAisvbD0kXcQ&q=Harry&Potter")
+        val connector = Connector()
+        val listOfBooks = connector.getListOfBooks(searchRequest)
 
-            val dbFactory = DocumentBuilderFactory.newInstance()
-            val dBuilder = dbFactory.newDocumentBuilder()
-            val xmlInput = InputSource(StringReader(xmlFile.readText()))
-            val doc = dBuilder.parse(xmlInput)
-
-            println("ok")
-            return doc
-
+        return listOfBooks
     }
 
     fun cameraBtnClicked(view: View){
@@ -64,33 +63,5 @@ class MainActivity : AppCompatActivity() {
             bookView.setImageBitmap(imageBitmap)
         }
     }
-
-/*    override fun onResume() {
-        println("${javaClass.simpleName} OnResume")
-        super.onResume()
-        setContentView(R.layout.activity_main)
-    }
-
-    override fun onRestart() {
-        println("${javaClass.simpleName} OnRestart")
-        super.onRestart()
-        setContentView(R.layout.activity_main)
-    }
-
-    override fun onPause() {
-        println("${javaClass.simpleName} OnPause")
-        super.onPause()
-
-    }
-
-    override fun onStop() {
-        println("${javaClass.simpleName} OnStop")
-        super.onStop()
-    }
-
-    override fun onDestroy() {
-        println("${javaClass.simpleName} OnDestroy")
-        super.onDestroy()
-    }*/
 
 }

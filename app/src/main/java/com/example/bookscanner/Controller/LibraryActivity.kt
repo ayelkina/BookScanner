@@ -1,61 +1,39 @@
 package com.example.bookscanner.Controller
 
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
+import com.example.bookscanner.Adapters.RecyclerAdapter
 import com.example.bookscanner.R
 import kotlinx.android.synthetic.main.library_activity.*
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import com.example.bookscanner.Model.Book
 import com.example.bookscanner.Services.LibraryDataBase
 
 class LibraryActivity : AppCompatActivity() {
 
-    private lateinit var listView: ListView
-    var adapter: ArrayAdapter<Book>? = null
-
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var viewAdapter: RecyclerView.Adapter<*>
+    private lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.library_activity)
-        setList()
+
 //        initializeUI()
+
+        viewManager = LinearLayoutManager(this)
+        viewAdapter = RecyclerAdapter(LibraryDataBase.library)
+
+        recyclerView = findViewById<RecyclerView>(R.id.recyclerView).apply {
+            layoutManager = viewManager
+            setHasFixedSize(true)
+            adapter = viewAdapter
+        }
 
         setSupportActionBar(toolbar)
     }
-
-    fun setList() {
-        listView = findViewById<ListView>(R.id.booksList)
-
-        val booksList = LibraryDataBase.library
-        val listItems = arrayOfNulls<String>(booksList.size)
-        for (i in 0 until booksList.size) {
-            val book = booksList[i]
-            listItems[i] = book.title
-
-        }
-
-        println(listItems[0])
-
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listItems)
-        listView.adapter = adapter
-    }
-
-    override fun onResume() {
-        Log.d("Library", "${javaClass.simpleName} OnResume")
-        super.onResume()
-        setContentView(R.layout.library_activity)
-    }
-
-    override fun onRestart() {
-        Log.d("Library", "${javaClass.simpleName} OnRestart")
-        super.onRestart()
-        setContentView(R.layout.library_activity)
-    }
-
 
     //NIE USUWAC! DI
     /*private fun initializeUI() {
@@ -73,7 +51,6 @@ class LibraryActivity : AppCompatActivity() {
     }*/
 
     fun backBtnClicked(view: View) {
-        val mainIntent = Intent(this, MainActivity::class.java)
         finish()
     }
 

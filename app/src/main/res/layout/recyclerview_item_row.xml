@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="wrap_content">
+
+    <ImageView
+            android:layout_width="146dp"
+            android:layout_height="120dp" app:srcCompat="@drawable/libros_stack"
+            android:id="@+id/bookImage" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="32dp" android:layout_marginStart="32dp"/>
+    <TextView
+            android:text="@string/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bookTitle" android:textSize="24sp" app:layout_constraintStart_toEndOf="@+id/bookImage"
+            android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
+            app:layout_constraintTop_toTopOf="@+id/bookImage"/>
+    <TextView
+            android:text="@string/author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bookAuthor" android:textSize="24sp" app:layout_constraintStart_toEndOf="@+id/bookImage"
+            android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/bookTitle" android:layout_marginTop="8dp"/>
+    <TextView
+            android:text="@string/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bookRating" android:textSize="24sp" app:layout_constraintStart_toEndOf="@+id/bookImage"
+            android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/bookAuthor" android:layout_marginTop="8dp"/>
+</android.support.constraint.ConstraintLayout>
