@@ -3,15 +3,50 @@ package com.example.bookscanner.Adapters
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import com.example.bookscanner.Model.Book
 import com.example.bookscanner.R
 
+
 class RecyclerAdapter (val books: List<Book>) : RecyclerView.Adapter<RecyclerAdapter.Holder>() {
 
-    class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    private var buttonActivate: Boolean = false
+    
+    class ClickListener(var context: Context, var recyclerView: RecyclerView, listener: OnItemClickListener): RecyclerView.OnItemTouchListener {
+        private var  mListener = listener
+//        private var mGestureDetector = GestureDetector(context, OnGestureListener )
+
+        interface OnItemClickListener {
+            fun onItemClick(view: View, position: Int)
+            fun onLongItemClick(view: View, position: Int)
+        }
+
+        override fun onTouchEvent(view: RecyclerView, event: MotionEvent) {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
+        override fun onInterceptTouchEvent(view: RecyclerView, event: MotionEvent): Boolean {
+            val childView = view.findChildViewUnder(event.getX(), event.getY())
+            if (childView != null) {
+                mListener.onItemClick(childView, view.getChildAdapterPosition(childView))
+                return true
+            }
+            return false
+        }
+
+        override fun onRequestDisallowInterceptTouchEvent(b: Boolean) { }
+
+        fun addButtonClicked(view: View) {
+            println("Hej button")
+        }
+
+    }
+
+    class Holder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
         val bookTitle = itemView.findViewById<TextView>(R.id.bookTitle)
         val bookAuthor = itemView.findViewById<TextView>(R.id.bookAuthor)
@@ -22,10 +57,19 @@ class RecyclerAdapter (val books: List<Book>) : RecyclerView.Adapter<RecyclerAda
             bookAuthor?.text = book.author
             bookRanking?.text = book.rating
         }
+
+
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bindCategory(books[position])
+
+        var addButton = holder.itemView.findViewById<ImageButton>(R.id.addButton)
+        if (buttonActivate) {
+            addButton.setVisibility(View.VISIBLE);
+        } else {
+            addButton.setVisibility(View.INVISIBLE);
+        }
     }
 
     override fun getItemCount(): Int {
@@ -34,8 +78,21 @@ class RecyclerAdapter (val books: List<Book>) : RecyclerView.Adapter<RecyclerAda
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.recyclerview_item_row, parent, false)
+            .inflate(R.layout.search_layout_item, parent, false)
+
+//        view.setOnClickListener(ClickListener(parent.context, view, ))
         return Holder(view)
     }
+
+    fun activateButton(activate: Boolean) {
+        buttonActivate = activate
+        notifyDataSetChanged() //need to call it for the child views to be re-created with buttons.
+    }
+
+    fun addButtonClicked(view: View) {
+        println("Add click")
+    }
+
+
 
 }

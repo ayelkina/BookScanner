@@ -4,8 +4,9 @@ import com.example.bookscanner.Model.Book
 
 object LibraryDataBase {
 
-    val library = listOf(
+    var library = mutableListOf(
         Book("Harry Potter", "J.K.Rowling", "4.9", "") ,
         Book("Book Thief", "M.Zusak", "4.6", "")
     )
+
 }

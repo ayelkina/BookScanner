@@ -1,11 +1,13 @@
 package com.example.bookscanner.Controller
 
+import android.content.Intent
+import android.net.sip.SipSession
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.View
+import android.widget.ImageButton
 import com.example.bookscanner.Adapters.RecyclerAdapter
 import com.example.bookscanner.R
 import kotlinx.android.synthetic.main.library_activity.*
@@ -30,9 +32,13 @@ class LibraryActivity : AppCompatActivity() {
             layoutManager = viewManager
             setHasFixedSize(true)
             adapter = viewAdapter
-        }
+            setSupportActionBar(toolbar)
 
-        setSupportActionBar(toolbar)
+//            addOnItemTouchListener()
+
+            (viewAdapter as RecyclerAdapter).activateButton(false)
+
+        }
     }
 
     //NIE USUWAC! DI
@@ -52,6 +58,11 @@ class LibraryActivity : AppCompatActivity() {
 
     fun backBtnClicked(view: View) {
         finish()
+    }
+
+    fun addButtonClicked(view: View) {
+        val searchIntent = Intent(this, AddBookActivity::class.java)
+        startActivity(searchIntent)
     }
 
 }

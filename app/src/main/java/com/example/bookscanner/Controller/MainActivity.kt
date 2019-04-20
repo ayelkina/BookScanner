@@ -6,16 +6,9 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.example.bookscanner.Model.Book
+import android.widget.EditText
 import com.example.bookscanner.R
-import com.example.bookscanner.Services.Connector
-
-import kotlinx.android.synthetic.main.activity_main.*
-import org.w3c.dom.Document
-import org.xml.sax.InputSource
-import java.io.File
-import java.io.StringReader
-import javax.xml.parsers.DocumentBuilderFactory
+import com.example.bookscanner.Services.OCR
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,24 +20,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun searchBtnClicked (view: View) {
-        sendGetRequest()
+    fun searchBtnClicked(view: View) {
+        val searchInputText = findViewById<EditText>(R.id.searchInputText)
+        val text = searchInputText.text.toString()
+        if (text == "") return
+        println(text)
+
+        startSearchActivity(text)
     }
 
-    fun sendGetRequest() :MutableList<Book>? {
-        val searchRequest = mutableListOf<String>()
-        searchRequest.add("złodziejka")
-        searchRequest.add("książek")
-        searchRequest.add("markus")
-        searchRequest.add("zusak")
-
-        val connector = Connector()
-        val listOfBooks = connector.getListOfBooks(searchRequest)
-
-        return listOfBooks
-    }
-
-    fun cameraBtnClicked(view: View){
+    fun cameraBtnClicked(view: View) {
+        println("Camera")
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
             takePictureIntent.resolveActivity(packageManager)?.also {
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
@@ -52,16 +38,35 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun libraryClicked (view: View) {
+    fun libraryClicked(view: View) {
         val libraryIntent = Intent(this, LibraryActivity::class.java)
         startActivity(libraryIntent)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        println("onActivityResult")
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             val imageBitmap = data?.extras?.get("data") as Bitmap
-            bookView.setImageBitmap(imageBitmap)
+            println(imageBitmap)
+
+            val ocr = OCR()
+            val list = ocr.getOcr(imageBitmap)
+            if (list == null) return
+
+            val text = StringBuilder("")
+            val length = if (list.size > 3) 1 else list.size
+            for (i in 0..length)
+                text.append(list[i]).append(" ")
+
+            startSearchActivity(text.toString())
         }
     }
 
+    private fun startSearchActivity(text: String) {
+        val searchIntent = Intent(this, SearchActivity::class.java)
+
+        println(text)
+        searchIntent.putExtra("request", text)
+        startActivity(searchIntent)
+    }
 }
