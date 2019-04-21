@@ -9,7 +9,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageButton
 import com.example.bookscanner.Adapters.RecyclerAdapter
+import com.example.bookscanner.Model.Book
 import com.example.bookscanner.R
+import com.example.bookscanner.Services.DBHelper
 import kotlinx.android.synthetic.main.library_activity.*
 import com.example.bookscanner.Services.LibraryDataBase
 
@@ -25,8 +27,20 @@ class LibraryActivity : AppCompatActivity() {
 
 //        initializeUI()
 
+        val dbHandler = DBHelper(this, null)
+        val cursor = dbHandler.getAllBooks()
+        cursor!!.moveToFirst()
+        val allBooks = mutableListOf<Book>()
+        while (cursor.moveToNext()) {
+            val title = cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_TITLE))
+            val author = cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_AUTHOR))
+            allBooks.add(Book(title, author))
+
+            println("title ${title} author ${author}")
+        }
+
         viewManager = LinearLayoutManager(this)
-        viewAdapter = RecyclerAdapter(LibraryDataBase.library)
+        viewAdapter = RecyclerAdapter(allBooks)
 
         recyclerView = findViewById<RecyclerView>(R.id.recyclerView).apply {
             layoutManager = viewManager
