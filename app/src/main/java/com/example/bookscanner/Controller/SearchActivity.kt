@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.bookscanner.Adapters.SearchRecyclerAdapter
@@ -51,7 +52,6 @@ class SearchActivity : AppCompatActivity() {
         val bundle = intent.extras
         val request = bundle?.getString("request")
         val books = sendGetRequest(request)
-
         return books
     }
 

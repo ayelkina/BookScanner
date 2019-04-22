@@ -107,7 +107,6 @@ class Connector {
      }
 
     private fun parseBookInfo(inputStream: InputStream?): String? {
-        var text = ""
         var description = ""
         try {
             val factory = XmlPullParserFactory.newInstance()

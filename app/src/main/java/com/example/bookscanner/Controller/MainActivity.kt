@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         if (list == null) return ""
 
         val text = StringBuilder("")
-        val length = if (list.size > 3) 2 else list.size
+        val length = if (list.size > 3) 1 else list.size
         for (i in 0..length)
             text.append(list[i]).append(" ")
 
