@@ -70,7 +70,7 @@ class Connector {
                 val tagname = parser.name
                 when (eventType) {
                     XmlPullParser.START_TAG -> if (tagname.equals("work")) {
-                        book = Book("", "", "", "")
+                        book = Book()
                         foundBooks.add(book)
                     }
 
@@ -80,9 +80,9 @@ class Connector {
                         book?.title = text
                     } else if (tagname.equals("name")) {
                         book?.author = text
-                    } else if (tagname.equals("id")) {
-                        if (book?.id.equals(""))
-                            book?.id = text
+                    } else if (tagname.equals("apiId")) {
+                        if (book?.apiId.equals(""))
+                            book?.apiId = text
                     } else if (tagname.equals("average_rating")) {
                         book?.rating = text
                     }

@@ -19,7 +19,7 @@
             tools:ignore="GoogleAppIndexingWarning"
             tools:targetApi="n">
         <activity
-                android:name=".Controller.AddBookActivity"
+                android:name=".Controller.EditBookActivity"
                 android:label="@string/title_activity_add_book"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>

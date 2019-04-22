@@ -11,10 +11,11 @@ class DataBaseHelper (context: Context, factory: SQLiteDatabase.CursorFactory?):
     override fun onCreate(db: SQLiteDatabase?) {
        val  CREATE_BOOKS_TABLE = ("CREATE TABLE " +
                TABLE_BOOK + " ( " +
-               COLUMN_TITLE + " TEXT, " +
-               COLUMN_AUTHOR + " TEXT, " +
-               COLUMN_RATING + " TEXT, " +
-               COLUMN_ID + " TEXT " + ")"
+               ID + " INTEGER PRIMARY KEY AUTOINCREMENT ,  " +
+               TITLE + " TEXT, " +
+               AUTHOR + " TEXT, " +
+               RATING + " TEXT, " +
+               API_ID + " TEXT " + ")"
                )
         db?.execSQL(CREATE_BOOKS_TABLE)
     }
@@ -23,16 +24,50 @@ class DataBaseHelper (context: Context, factory: SQLiteDatabase.CursorFactory?):
        db?.execSQL("DROP TABLE IF EXISTS " + TABLE_BOOK)
     }
 
-    fun addBook(book: Book) {
+    fun insert(book: Book) {
         val values = ContentValues()
-        values.put(COLUMN_TITLE, book.title)
-        values.put(COLUMN_AUTHOR, book.author)
-        values.put(COLUMN_RATING, book.rating)
-        values.put(COLUMN_ID, book.id)
+        values.put(TITLE, book.title)
+        values.put(AUTHOR, book.author)
+        values.put(RATING, book.rating)
+        values.put(API_ID, book.apiId)
 
         val db = this.writableDatabase
         db.insert(TABLE_BOOK, null, values)
         db.close()
+    }
+
+    fun update(book: Book) {
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put(TITLE, book.title)
+        values.put(AUTHOR, book.author)
+        db.update(TABLE_BOOK, values, ID + "=?", arrayOf(book.dbId)).toLong()
+        db.close()
+    }
+
+    fun delete(book: Book) {
+        val db = this.writableDatabase
+        val values = ContentValues()
+        db.delete(TABLE_BOOK, ID + "=?", arrayOf(book.dbId)).toLong()
+        db.close()
+    }
+
+    fun create() {
+        val db = this.writableDatabase
+        val  CREATE_BOOKS_TABLE = ("CREATE TABLE " +
+                TABLE_BOOK + " ( " +
+                ID + " INTEGER PRIMARY KEY AUTOINCREMENT  ,  " +
+                TITLE + " TEXT, " +
+                AUTHOR + " TEXT, " +
+                RATING + " TEXT, " +
+                API_ID + " TEXT " + ")"
+                )
+        db?.execSQL(CREATE_BOOKS_TABLE)
+    }
+
+    fun drop() {
+        val db = this.writableDatabase
+        db?.execSQL("DROP TABLE IF EXISTS " + TABLE_BOOK)
     }
 
     fun getAllBooks(): Cursor? {
@@ -42,11 +77,12 @@ class DataBaseHelper (context: Context, factory: SQLiteDatabase.CursorFactory?):
 
     companion object {
         private val DATABASE_NAME = "LIBRARY.db"
-        private val DATABASE_VERSION = 2
+        private val DATABASE_VERSION = 3
         val TABLE_BOOK = "book"
-        val COLUMN_TITLE = "title"
-        val COLUMN_AUTHOR = "author"
-        val COLUMN_RATING = "rating"
-        val  COLUMN_ID = "id"
+        val ID = "apiId"
+        val TITLE = "title"
+        val AUTHOR = "author"
+        val RATING = "rating"
+        val API_ID = "api_id"
     }
 }

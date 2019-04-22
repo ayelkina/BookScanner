@@ -5,41 +5,53 @@
                                              android:layout_width="match_parent"
                                              android:layout_height="wrap_content">
 
-    <ImageView
-            android:layout_width="146dp"
-            android:layout_height="80dp" app:srcCompat="@drawable/libros_stack"
-            android:id="@+id/bookImage" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-    />
     <TextView
             android:text="@string/title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/bookTitle" android:textSize="18sp" app:layout_constraintStart_toEndOf="@+id/bookImage"
-            android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
-            app:layout_constraintTop_toTopOf="@+id/bookImage" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="45dp" android:layout_marginRight="45dp"/>
+            android:id="@+id/bookTitle" android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp" android:layout_marginTop="16dp" app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/colorPrimaryDark" android:textStyle="bold" android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toStartOf="@+id/acceptButton" android:layout_marginRight="24dp"/>
     <TextView
             android:text="@string/author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/bookAuthor" android:textSize="18sp" app:layout_constraintStart_toEndOf="@+id/bookImage"
-            android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/bookTitle"/>
+            android:id="@+id/bookAuthor" android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/labelAuthor"
+            app:layout_constraintTop_toTopOf="@+id/labelAuthor"/>
+    <TextView
+            android:text="Author: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/labelAuthor" android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@+id/bookTitle" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="24dp" android:layout_marginStart="24dp" tools:text="Author: "
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="16dp"
+            android:layout_marginTop="4dp"/>
     <TextView
             android:text="@string/rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/bookRating" android:textSize="18sp" app:layout_constraintStart_toEndOf="@+id/bookImage"
-            android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/bookAuthor"/>
+            android:id="@+id/bookRating" android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:textColor="@android:color/black"
+            android:textStyle="bold" android:layout_marginBottom="8dp"/>
     <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" app:srcCompat="@android:drawable/ic_menu_add"
-            android:id="@+id/addButton"
-            android:background="@android:color/transparent" android:tint="@android:color/holo_red_dark"
-            android:layout_marginEnd="5dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="5dp"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content" app:srcCompat="@android:drawable/ic_input_add"
+            android:id="@+id/acceptButton"
+            android:background="@android:color/transparent" android:tint="@android:color/holo_green_dark"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
             android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
             android:onClick="addButtonClicked"/>
+    <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
 </android.support.constraint.ConstraintLayout>

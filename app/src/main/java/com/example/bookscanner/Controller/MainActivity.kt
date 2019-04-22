@@ -7,6 +7,7 @@ import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.EditText
+import android.widget.SearchView
 import com.example.bookscanner.R
 import com.example.bookscanner.Services.OCR
 

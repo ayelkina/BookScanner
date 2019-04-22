@@ -5,11 +5,12 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.widget.ImageButton
-import com.example.bookscanner.Adapters.RecyclerAdapter
+import android.widget.Toast
+import com.example.bookscanner.Adapters.SearchRecyclerAdapter
 import com.example.bookscanner.Model.Book
 import com.example.bookscanner.R
 import com.example.bookscanner.Services.Connector
+import com.example.bookscanner.Services.DataBaseHelper
 
 class SearchActivity : AppCompatActivity() {
 
@@ -31,14 +32,18 @@ class SearchActivity : AppCompatActivity() {
 
     private fun createRecyclerView(bookList: List<Book>) {
         viewManager = LinearLayoutManager(this)
-        viewAdapter = RecyclerAdapter(bookList)
+        viewAdapter = SearchRecyclerAdapter(bookList)
 
         recyclerView = findViewById<RecyclerView>(R.id.searchList).apply {
             layoutManager = viewManager
             setHasFixedSize(true)
             adapter = viewAdapter
+        }
 
-            (viewAdapter as RecyclerAdapter).activateButton(false)
+        val dbHandler = DataBaseHelper(this, null)
+        (viewAdapter as SearchRecyclerAdapter).onAddBtnClick = { book ->
+            dbHandler.insert(book)
+            Toast.makeText(this,  "Added to your shelf", Toast.LENGTH_LONG).show()
         }
     }
 

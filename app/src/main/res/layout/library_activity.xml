@@ -38,7 +38,7 @@
     <ImageButton
             android:layout_width="80dp"
             android:layout_height="80dp" app:srcCompat="@android:drawable/ic_menu_add"
-            android:id="@+id/addButton"
+            android:id="@+id/acceptButton"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp" android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp" app:layout_constraintBottom_toBottomOf="parent"
             android:background="@android:color/transparent" android:scaleType="fitXY"
