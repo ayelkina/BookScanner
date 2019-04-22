@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
     val REQUEST_IMAGE_CAPTURE = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        println("${javaClass.simpleName} onCreate")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
@@ -24,18 +23,8 @@ class MainActivity : AppCompatActivity() {
         val searchInputText = findViewById<EditText>(R.id.searchInputText)
         val text = searchInputText.text.toString()
         if (text == "") return
-        println(text)
 
         startSearchActivity(text)
-    }
-
-    fun cameraBtnClicked(view: View) {
-        println("Camera")
-        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-            takePictureIntent.resolveActivity(packageManager)?.also {
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-            }
-        }
     }
 
     fun libraryClicked(view: View) {
@@ -43,29 +32,38 @@ class MainActivity : AppCompatActivity() {
         startActivity(libraryIntent)
     }
 
+    fun cameraBtnClicked(view: View) {
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+            takePictureIntent.resolveActivity(packageManager)?.also {
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+            }
+        }
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        println("onActivityResult")
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             val imageBitmap = data?.extras?.get("data") as Bitmap
-            println(imageBitmap)
+            val text = getTextFromPhoto(imageBitmap)
 
-            val ocr = OCR()
-            val list = ocr.getOcr(imageBitmap)
-            if (list == null) return
-
-            val text = StringBuilder("")
-            val length = if (list.size > 3) 1 else list.size
-            for (i in 0..length)
-                text.append(list[i]).append(" ")
-
-            startSearchActivity(text.toString())
+            startSearchActivity(text)
         }
+    }
+
+    private fun getTextFromPhoto(imageBitmap: Bitmap): String {
+        val ocr = OCR()
+        val list = ocr.getOcr(imageBitmap)
+        if (list == null) return ""
+
+        val text = StringBuilder("")
+        val length = if (list.size > 3) 2 else list.size
+        for (i in 0..length)
+            text.append(list[i]).append(" ")
+
+        return text.toString()
     }
 
     private fun startSearchActivity(text: String) {
         val searchIntent = Intent(this, SearchActivity::class.java)
-
-        println(text)
         searchIntent.putExtra("request", text)
         startActivity(searchIntent)
     }

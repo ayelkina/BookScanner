@@ -21,46 +21,52 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.search_activity)
 
-        createRecyclerView()
-    }
-
-    private fun createRecyclerView() {
-        val bundle = intent.extras
-        val request = bundle?.getString("request")
-
-        val books = sendGetRequest(request)
+        val books = getBooksFromApi()
         if (books == null || books.size == 0) {
             setNotFoundPicture()
             return
-        } else println("Found ${books[0].author}")
+        }
+        createRecyclerView(books)
+    }
+
+    private fun createRecyclerView(bookList: List<Book>) {
         viewManager = LinearLayoutManager(this)
-        viewAdapter = RecyclerAdapter(books)
+        viewAdapter = RecyclerAdapter(bookList)
 
         recyclerView = findViewById<RecyclerView>(R.id.searchList).apply {
             layoutManager = viewManager
             setHasFixedSize(true)
             adapter = viewAdapter
 
-            (viewAdapter as RecyclerAdapter).activateButton(true)
-
+            (viewAdapter as RecyclerAdapter).activateButton(false)
         }
     }
 
+    private fun getBooksFromApi(): List<Book>? {
+        val bundle = intent.extras
+        val request = bundle?.getString("request")
+        val books = sendGetRequest(request)
+
+        return books
+    }
+
     private fun setNotFoundPicture() {
-        println("Not found")
+        //TODO
         return
     }
 
     fun sendGetRequest(request: String?): List<Book>? {
         if(request == null) return null
         val searchRequest = mutableListOf<String>()
-
-        //TODO dodać parsowanie stringu
         searchRequest.add(request)
 
         val connector = Connector()
         val listOfBooks = connector.getListOfBooks(searchRequest)
 
         return listOfBooks
+    }
+
+    fun backBtnClicked(view: View) {
+        finish()
     }
 }

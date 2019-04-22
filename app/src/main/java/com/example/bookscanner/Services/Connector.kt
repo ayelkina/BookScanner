@@ -9,7 +9,6 @@ import java.lang.Exception
 import java.net.HttpURLConnection
 import java.net.URL
 import kotlinx.coroutines.*
-import kotlin.coroutines.suspendCoroutine
 
 class Connector {
 
@@ -18,7 +17,6 @@ class Connector {
     private val key = "?key=35Arndk48sAisvbD0kXcQ"
 
     fun getListOfBooks(request: List<String>): MutableList<Book>? = runBlocking {
-
         val url = StringBuilder(searchBookUrl)
         url.append(key).append("&q=")
         val listLength = request.size - 1
@@ -31,11 +29,9 @@ class Connector {
 
         val urlString = url.toString()
         getBooksFromUrl(urlString)
-
     }
 
     private suspend fun getBooksFromUrl(urlString: String): MutableList<Book>? {
-        println("getBooksFromUrl")
         val stream = GlobalScope.async { downloadUrl(urlString) }
         val str = stream.await()
         return if (str != null)
@@ -44,7 +40,6 @@ class Connector {
     }
 
     private fun downloadUrl(urlString: String): InputStream? {
-        println("downloadUrl")
         val url = URL(urlString)
         return (url.openConnection() as? HttpURLConnection)?.run {
             readTimeout = 10000
@@ -58,11 +53,9 @@ class Connector {
                 null
             }
         }
-
     }
 
     private fun parseBooksListStream(inputStream: InputStream?): MutableList<Book> {
-        println("parseBooksListStream")
         var text = ""
         var book: Book? = null
         val foundBooks = mutableListOf<Book>()

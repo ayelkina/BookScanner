@@ -1,19 +1,15 @@
 package com.example.bookscanner.Controller
 
 import android.content.Intent
-import android.net.sip.SipSession
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.widget.ImageButton
 import com.example.bookscanner.Adapters.RecyclerAdapter
 import com.example.bookscanner.Model.Book
 import com.example.bookscanner.R
-import com.example.bookscanner.Services.DBHelper
-import kotlinx.android.synthetic.main.library_activity.*
-import com.example.bookscanner.Services.LibraryDataBase
+import com.example.bookscanner.Services.DataBaseHelper
 
 class LibraryActivity : AppCompatActivity() {
 
@@ -24,51 +20,41 @@ class LibraryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.library_activity)
+        val allBooks = getBooksFromDB()
 
-//        initializeUI()
+        createRecyclerView(allBooks)
+    }
 
-        val dbHandler = DBHelper(this, null)
+    override fun onRestart() {
+        super.onRestart()
+        val allBooks = getBooksFromDB()
+
+        createRecyclerView(allBooks)
+    }
+
+    private fun getBooksFromDB(): MutableList<Book> {
+        val dbHandler = DataBaseHelper(this, null)
         val cursor = dbHandler.getAllBooks()
         cursor!!.moveToFirst()
         val allBooks = mutableListOf<Book>()
         while (cursor.moveToNext()) {
-            val title = cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_TITLE))
-            val author = cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_AUTHOR))
+            val title = cursor.getString(cursor.getColumnIndex(DataBaseHelper.COLUMN_TITLE))
+            val author = cursor.getString(cursor.getColumnIndex(DataBaseHelper.COLUMN_AUTHOR))
             allBooks.add(Book(title, author))
-
-            println("title ${title} author ${author}")
         }
+        return allBooks
+    }
 
+    private fun createRecyclerView(booksList: MutableList<Book>) {
         viewManager = LinearLayoutManager(this)
-        viewAdapter = RecyclerAdapter(allBooks)
-
+        viewAdapter = RecyclerAdapter(booksList)
         recyclerView = findViewById<RecyclerView>(R.id.recyclerView).apply {
             layoutManager = viewManager
             setHasFixedSize(true)
             adapter = viewAdapter
-            setSupportActionBar(toolbar)
-
-//            addOnItemTouchListener()
-
             (viewAdapter as RecyclerAdapter).activateButton(false)
-
         }
     }
-
-    //NIE USUWAC! DI
-    /*private fun initializeUI() {
-        val factory = InjectorUtils.provideLibraryViewModelFactory()
-        val viewModel = ViewModelProviders.of(this, factory)
-            .get(LibraryViewModel::class.java)
-
-        viewModel.getBooks().observe(this, Observer { books ->
-            val stringBuilder = StringBuilder()
-            books?.forEach { book ->
-                stringBuilder.append("$book\n\n")
-            }
-//            textView_quotes.text = stringBuilder.toString()
-        })
-    }*/
 
     fun backBtnClicked(view: View) {
         finish()
