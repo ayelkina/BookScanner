@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
+
     fun searchBtnClicked(view: View) {
         val searchInputText = findViewById<EditText>(R.id.searchInputText)
         val text = searchInputText.text.toString()

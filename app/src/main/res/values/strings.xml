@@ -15,7 +15,7 @@
     <string name="button">Button</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
-    <string name="oh_hi">Oh, Hi</string>
+    <string name="oh_hi">BookScanner</string>
     <string name="type_book_title">Type book title</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
