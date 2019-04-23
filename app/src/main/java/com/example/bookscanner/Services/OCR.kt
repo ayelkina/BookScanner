@@ -1,6 +1,7 @@
 package com.example.bookscanner.Services
 
 import android.graphics.Bitmap
+import android.util.Log
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
@@ -19,28 +20,34 @@ class OCR {
     private val key = "57696b14ae494d99827c2e2912b7e9a4"
     private val apiURL = "https://westeurope.api.cognitive.microsoft.com/vision/v2.0/recognizeText"
 
-    fun getOcr(imageBitmap: Bitmap): List<String>? = runBlocking{
-        val bookAddress = "http://s.lubimyczytac.pl/upload/books/204000/204005/321402-352x500.jpg"
+    fun getOcr(imageBitmap: ByteArray): List<String>? = runBlocking{
 
-        val urlString  = GlobalScope.async {getClientUrlFromApi(bookAddress)}
+        Log.i("Tag ", "${imageBitmap}")
+//        val urlString  = GlobalScope.async {getClientUrlFromApi(bookAddress)}
+        val urlString  = GlobalScope.async {
+            getClientUrlFromApi(imageBitmap)}
         val jsonString = GlobalScope.async { makeRequest(urlString.await())
         }
 
         getOcrText(jsonString.await())
     }
 
-    private fun getClientUrlFromApi(bookAddress: String): String {
-
+    private fun getClientUrlFromApi(imageBitmap: ByteArray): String {
+        Log.i("Tag ", "getClientUrlFromApi")
+        val bookAddress = "http://s.lubimyczytac.pl/upload/books/204000/204005/321402-352x500.jpg"
         val builder =
             URIBuilder(apiURL) //recognizeText
         builder.setParameter("mode", "Printed")
 
         val uri = builder.build()
         val request = HttpPost(uri)
-        request.setHeader("Content-Type", "application/json")
+//        request.setHeader("Content-Type", "application/json")
+        request.setHeader("Content-Type", "application/octet-stream")
         request.setHeader("Ocp-Apim-Subscription-Key", key)
 
         val reqEntity = StringEntity("{\"url\":\"$bookAddress\"}")
+//        val reqEntity = StringEntity("[" + imageBitmap + "]")
+        Log.i("Tag ", "reqEntity ${reqEntity}")
         request.setEntity(reqEntity)
 
         val response = httpclient.execute(request)
@@ -51,6 +58,7 @@ class OCR {
     }
 
     private fun makeRequest(urlString: String): String {
+        Log.i("Tag ", "makeRequest")
         val builder = URIBuilder(urlString)
         val uri = builder.build()
         val newRequest = HttpGet(uri)
@@ -70,7 +78,7 @@ class OCR {
     }
 
     private fun getOcrText(jsonString: String): MutableList<String> {
-
+        Log.i("Tag ", "getOcrText")
         val ocrText = mutableListOf<String>()
         val answer = JSONObject(jsonString)
         val data = answer.getJSONObject("recognitionResult")

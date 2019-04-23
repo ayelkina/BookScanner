@@ -4,8 +4,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.View
+import android.widget.SearchView
 import android.widget.Toast
 import com.example.bookscanner.Adapters.SearchRecyclerAdapter
 import com.example.bookscanner.Model.Book
@@ -23,12 +23,36 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.search_activity)
 
-        val books = getBooksFromApi()
-        if (books == null || books.size == 0) {
-            setNotFoundPicture()
-            return
-        }
-        createRecyclerView(books)
+        val bundle = intent.extras
+        val request = bundle?.getString("request")
+
+        setSearchViewConfiguration(request)
+    }
+
+    private fun setSearchViewConfiguration(request: String?) {
+        val searchView = findViewById<SearchView>(R.id.searchView)
+        searchView.setIconifiedByDefault(true)
+        searchView.setFocusable(true);
+        searchView.setIconified(false);
+        searchView.queryHint = "Search for a book"
+        searchView.setQuery(request, true)
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                val books = sendGetRequest(query)
+                if (books == null || books.size == 0) {
+                    setNotFoundPicture()
+                    return false
+                }
+
+                createRecyclerView(books)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                return false
+            }
+        })
     }
 
     private fun createRecyclerView(bookList: List<Book>) {
@@ -46,13 +70,6 @@ class SearchActivity : AppCompatActivity() {
             dbHandler.insert(book)
             Toast.makeText(this,  "Added to your shelf", Toast.LENGTH_LONG).show()
         }
-    }
-
-    private fun getBooksFromApi(): List<Book>? {
-        val bundle = intent.extras
-        val request = bundle?.getString("request")
-        val books = sendGetRequest(request)
-        return books
     }
 
     private fun setNotFoundPicture() {
