@@ -70,6 +70,7 @@ class MainActivity : AppCompatActivity() {
             val stream = ByteArrayOutputStream()
             imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
             val byteArray = stream.toByteArray()
+
             val text = getTextFromPhoto(byteArray)
             startSearchActivity(text)
         }

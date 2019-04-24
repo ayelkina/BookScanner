@@ -12,6 +12,7 @@ import com.example.bookscanner.Model.Book
 import com.example.bookscanner.R
 import com.example.bookscanner.Services.Connector
 import com.example.bookscanner.Services.DataBaseHelper
+import com.example.bookscanner.Services.OCR
 
 class SearchActivity : AppCompatActivity() {
 
@@ -25,7 +26,6 @@ class SearchActivity : AppCompatActivity() {
 
         val bundle = intent.extras
         val request = bundle?.getString("request")
-
         setSearchViewConfiguration(request)
     }
 
