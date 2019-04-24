@@ -12,6 +12,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="search_hint">Search for a book</string>
     <string name="button">Button</string>
     <string name="register">Register</string>
     <string name="login">Login</string>

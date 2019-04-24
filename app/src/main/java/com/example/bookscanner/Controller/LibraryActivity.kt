@@ -55,7 +55,7 @@ class LibraryActivity : AppCompatActivity() {
             adapter = viewAdapter
         }
 
-        (viewAdapter as LibraryRecyclerAdapter).onEditBtnClick = { book ->
+        (viewAdapter as LibraryRecyclerAdapter).onClickListener = { book ->
             updateBook(book)
         }
 

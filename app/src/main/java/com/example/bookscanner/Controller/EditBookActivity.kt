@@ -60,4 +60,8 @@ class EditBookActivity : AppCompatActivity() {
         val book = Book(id!!, title, author, null, null)
         dbHandler.update(book)
     }
+
+    fun backBtnClicked(view: View) {
+        finish()
+    }
 }

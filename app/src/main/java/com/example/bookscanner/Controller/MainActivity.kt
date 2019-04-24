@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun setSearchViewConfiguration() {
         val searchView = findViewById<SearchView>(R.id.searchView)
-        searchView.queryHint = "Search for a book"
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 if (query == "") return false
@@ -44,8 +43,6 @@ class MainActivity : AppCompatActivity() {
         super.onRestart()
         val searchView = findViewById<SearchView>(R.id.searchView)
         searchView.setQuery("", false)
-        searchView.setIconifiedByDefault(true)
-        searchView.setFocusable(true);
         searchView.setIconified(true);
     }
 

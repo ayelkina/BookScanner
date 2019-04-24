@@ -13,7 +13,8 @@
             android:layout_marginStart="8dp" android:layout_marginRight="8dp" android:layout_marginEnd="8dp"
             app:layout_constraintHorizontal_bias="0.0"
             android:layoutDirection="rtl"
+            app:queryHint="@string/search_hint"
             android:id="@+id/searchView" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/backgroundView" tools:targetApi="jelly_bean_mr1"
-            tools:ignore="UnknownIdInLayout"/>
+            tools:ignore="UnknownIdInLayout" android:queryHint="@string/search_hint"/>
 </android.support.constraint.ConstraintLayout>

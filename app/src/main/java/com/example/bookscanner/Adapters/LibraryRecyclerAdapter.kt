@@ -11,8 +11,8 @@ import com.example.bookscanner.R
 
 class LibraryRecyclerAdapter(val books: List<Book>) : RecyclerView.Adapter<LibraryRecyclerAdapter.Holder>() {
 
-    var onEditBtnClick: ((Book) -> Unit)? = null
     var onDeleteBtnClick: ((Book) -> Unit)? = null
+    var onClickListener: ((Book) -> Unit)? = null
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val bookTitle = itemView.findViewById<TextView>(R.id.bookTitle)
@@ -28,9 +28,9 @@ class LibraryRecyclerAdapter(val books: List<Book>) : RecyclerView.Adapter<Libra
         }
 
         private fun setClickListeners(book: Book) {
-            val editBtn = itemView.findViewById<ImageButton>(R.id.editButton)
-            editBtn.setOnClickListener {
-                onEditBtnClick?.invoke(book)
+
+            itemView.setOnClickListener {
+                onClickListener?.invoke(book)
             }
 
             val deleteBtn = itemView.findViewById<ImageButton>(R.id.deleteButton)

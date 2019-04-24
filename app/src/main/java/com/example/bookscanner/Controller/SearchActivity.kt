@@ -31,10 +31,7 @@ class SearchActivity : AppCompatActivity() {
 
     private fun setSearchViewConfiguration(request: String?) {
         val searchView = findViewById<SearchView>(R.id.searchView)
-        searchView.setIconifiedByDefault(true)
-        searchView.setFocusable(true);
         searchView.setIconified(false);
-        searchView.queryHint = "Search for a book"
         searchView.setQuery(request, true)
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
