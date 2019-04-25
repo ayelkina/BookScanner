@@ -3,6 +3,7 @@ package com.example.bookscanner.Controller
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -23,6 +24,12 @@ class LibraryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.library_activity)
         dbHandler = DataBaseHelper(this, null)
+
+        val fab: View = findViewById(R.id.fab)
+        fab.setOnClickListener { view ->
+            val addBookIntent = Intent(this, EditBookActivity::class.java)
+            startActivity(addBookIntent)
+        }
 
         createRecyclerView()
     }
@@ -69,10 +76,10 @@ class LibraryActivity : AppCompatActivity() {
         finish()
     }
 
-    fun addButtonClicked(view: View) {
+  /*  fun addButtonClicked(view: View) {
         val addBookIntent = Intent(this, EditBookActivity::class.java)
         startActivity(addBookIntent)
-    }
+    }*/
 
     fun updateBook(book: Book) {
         val addBookIntent = Intent(this, EditBookActivity::class.java)

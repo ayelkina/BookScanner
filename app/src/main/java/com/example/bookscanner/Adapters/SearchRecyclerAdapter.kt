@@ -23,7 +23,7 @@ class SearchRecyclerAdapter (val books: List<Book>) : RecyclerView.Adapter<Searc
             bookAuthor?.text = book.author
             bookRanking?.text = book.rating
 
-            val addBtn = itemView.findViewById<ImageButton>(R.id.acceptButton)
+            val addBtn = itemView.findViewById<ImageButton>(R.id.acceptButton1)
             addBtn.setOnClickListener {
                 onAddBtnClick?.invoke(book)
             }

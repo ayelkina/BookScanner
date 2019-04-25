@@ -14,7 +14,7 @@
             app:layout_constraintHorizontal_bias="0.0"/>
     <ImageButton
             android:layout_width="49dp"
-            android:layout_height="wrap_content" app:srcCompat="@android:drawable/ic_menu_revert"
+            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_action_arrow_back_ios"
             android:id="@+id/backBtn"
             app:layout_constraintStart_toStartOf="@+id/toolbar"
             android:adjustViewBounds="false"
