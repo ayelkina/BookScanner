@@ -76,11 +76,6 @@ class LibraryActivity : AppCompatActivity() {
         finish()
     }
 
-  /*  fun addButtonClicked(view: View) {
-        val addBookIntent = Intent(this, EditBookActivity::class.java)
-        startActivity(addBookIntent)
-    }*/
-
     fun updateBook(book: Book) {
         val addBookIntent = Intent(this, EditBookActivity::class.java)
         addBookIntent.putExtra("id", book.dbId)
