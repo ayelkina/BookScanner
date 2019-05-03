@@ -1,5 +1,6 @@
 package com.example.bookscanner.Services
 
+import android.util.Log
 import com.example.bookscanner.Model.Book
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserFactory
@@ -80,9 +81,9 @@ class Connector {
                         book?.title = text
                     } else if (tagname.equals("name")) {
                         book?.author = text
-                    } else if (tagname.equals("apiId")) {
-                        if (book?.apiId.equals(""))
+                    } else if (tagname.equals("id")) {
                             book?.apiId = text
+                        Log.i("Id", text)
                     } else if (tagname.equals("average_rating")) {
                         book?.rating = text
                     }

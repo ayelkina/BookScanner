@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
@@ -64,8 +65,13 @@ class SearchActivity : AppCompatActivity() {
 
         val dbHandler = DataBaseHelper(this, null)
         (viewAdapter as SearchRecyclerAdapter).onAddBtnClick = { book ->
-            dbHandler.insert(book)
-            Toast.makeText(this,  "Added to your shelf", Toast.LENGTH_LONG).show()
+            if((viewAdapter as SearchRecyclerAdapter).buttonClicked) {
+                dbHandler.insert(book)
+                Toast.makeText(this, "Added to your shelf", Toast.LENGTH_LONG).show()
+            }
+            else {
+                dbHandler.deleteByTitle(book)
+            }
         }
     }
 

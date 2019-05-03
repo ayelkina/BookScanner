@@ -12,6 +12,7 @@ import com.example.bookscanner.R
 class SearchRecyclerAdapter (val books: List<Book>) : RecyclerView.Adapter<SearchRecyclerAdapter.Holder>() {
 
     var onAddBtnClick: ((Book) -> Unit)? = null
+    var buttonClicked: Boolean = false
     
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val bookTitle = itemView.findViewById<TextView>(R.id.bookTitle)
@@ -23,8 +24,15 @@ class SearchRecyclerAdapter (val books: List<Book>) : RecyclerView.Adapter<Searc
             bookAuthor?.text = book.author
             bookRanking?.text = book.rating
 
-            val addBtn = itemView.findViewById<ImageButton>(R.id.acceptButton1)
+            val addBtn = itemView.findViewById<ImageButton>(R.id.addBookButton)
             addBtn.setOnClickListener {
+                buttonClicked = !buttonClicked
+                if(buttonClicked) {
+                    addBtn.setBackgroundResource(R.drawable.ic_action_star_active)
+                }
+                else {
+                    addBtn.setBackgroundResource(R.drawable.ic_action_star_border)
+                }
                 onAddBtnClick?.invoke(book)
             }
         }

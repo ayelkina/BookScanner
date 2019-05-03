@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import com.example.bookscanner.Model.Book
 
 class DataBaseHelper (context: Context, factory: SQLiteDatabase.CursorFactory?): SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
@@ -26,6 +27,7 @@ class DataBaseHelper (context: Context, factory: SQLiteDatabase.CursorFactory?):
 
     fun insert(book: Book) {
         val values = ContentValues()
+        Log.i("Insert", book.apiId)
         values.put(TITLE, book.title)
         values.put(AUTHOR, book.author)
         values.put(RATING, book.rating)
@@ -47,8 +49,13 @@ class DataBaseHelper (context: Context, factory: SQLiteDatabase.CursorFactory?):
 
     fun delete(book: Book) {
         val db = this.writableDatabase
-        val values = ContentValues()
         db.delete(TABLE_BOOK, ID + "=?", arrayOf(book.dbId)).toLong()
+        db.close()
+    }
+
+    fun deleteByTitle(book: Book) {
+        val db = this.writableDatabase
+        db.delete(TABLE_BOOK, TITLE + "=?", arrayOf(book.title)).toLong()
         db.close()
     }
 

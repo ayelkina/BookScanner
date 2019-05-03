@@ -8,9 +8,11 @@
         android:layout_height="match_parent"
         tools:context=".Controller.LibraryActivity">
 
-    <include layout="@layout/toolbar_layout" android:id="@+id/include" app:layout_constraintTop_toTopOf="parent"
-             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-             android:layout_height="70dp" android:layout_width="0dp"/>
+    <include layout="@layout/toolbar_layout" android:id="@+id/include"
+             android:layout_height="wrap_content" android:layout_width="0dp"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintEnd_toEndOf="parent" tools:layout_editor_absoluteY="0dp"
+             app:layout_constraintHorizontal_bias="0.0"/>
 
     <android.support.v7.widget.RecyclerView
             android:layout_width="0dp"
@@ -19,24 +21,20 @@
             app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/recyclerView"
             app:layout_constraintTop_toBottomOf="@+id/include" app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintBottom_toTopOf="@+id/fab"/>
+            android:layout_marginBottom="32dp" app:layout_constraintBottom_toBottomOf="parent"/>
 
     <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fab_margin"
 
             app:backgroundTint="@android:color/transparent"
-            android:src="@drawable/ic_action_add_box_red"
-            app:maxImageSize="70dp"
+            android:src="@drawable/add_button_circle"
+            app:maxImageSize="56dp"
             app:fabSize="normal" app:elevation="0dp" android:scaleType="center"
-            android:saveEnabled="false" android:scrollbarSize="0dp" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="8dp" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginRight="8dp"/>
-
-
-
+            android:background="@android:color/background_dark" app:backgroundTintMode="src_in"
+            android:layout_marginEnd="16dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="16dp" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"/>
 
 </android.support.constraint.ConstraintLayout>

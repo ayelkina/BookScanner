@@ -7,6 +7,7 @@ import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.SearchView
+import android.widget.TextView
 import com.example.bookscanner.R
 import com.example.bookscanner.Services.OCR
 import java.io.ByteArrayOutputStream
@@ -24,10 +25,22 @@ class MainActivity : AppCompatActivity() {
 
     private fun setSearchViewConfiguration() {
         val searchView = findViewById<SearchView>(R.id.searchView)
+        val titleText = findViewById<TextView>(R.id.titleText)
+
+        searchView.setOnSearchClickListener {
+            titleText.visibility = View.INVISIBLE
+            startSearchActivity("")
+        }
+
+        searchView.setOnCloseListener {
+            titleText.visibility = View.VISIBLE
+            false
+        }
+
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 if (query == "") return false
-                startSearchActivity(query)
+
                 return false
             }
 
