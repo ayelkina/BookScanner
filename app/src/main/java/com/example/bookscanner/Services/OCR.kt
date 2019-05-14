@@ -1,59 +1,53 @@
 package com.example.bookscanner.Services
 
-import android.util.Log
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.client.methods.HttpPost
 import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.entity.StringEntity
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 import org.json.JSONObject
+import org.apache.http.entity.FileEntity
+import java.io.File
 
 
 class OCR {
     private val httpclient = HttpClients.createDefault()
-    private val key = "57696b14ae494d99827c2e2912b7e9a4"
+    private val key = "5c22670cbe4f49b888973bf504f93ca8"
     private val apiURL = "https://westeurope.api.cognitive.microsoft.com/vision/v2.0/recognizeText"
 
-    fun getOcr(imageBitmap: ByteArray): List<String>? = runBlocking{
+    fun getOcr(file: File): List<String>? = runBlocking{
 
-        val urlString  = GlobalScope.async { getClientUrlFromApi(imageBitmap)}
+        val urlString  = GlobalScope.async { getClientUrlFromApi(file)}
         val jsonString = GlobalScope.async { makeRequest(urlString.await())
         }
 
         getOcrText(jsonString.await())
     }
 
-
-
-    private fun getClientUrlFromApi(imageBitmap: ByteArray): String {
-        val bookAddress = "http://s.lubimyczytac.pl/upload/books/204000/204005/321402-352x500.jpg" //mock
+    private fun getClientUrlFromApi(file: File): String {
         val builder =
             URIBuilder(apiURL) //recognizeText
-        builder.setParameter("mode", "Printed")
+        builder.setParameter("mode", "Handwritten")
 
         val uri = builder.build()
         val request = HttpPost(uri)
-        request.setHeader("Content-Type", "application/json")
-//        request.setHeader("Content-Type", "application/octet-stream")
         request.setHeader("Ocp-Apim-Subscription-Key", key)
-
-        val reqEntity = StringEntity("{\"url\":\"$bookAddress\"}")
-//        val reqEntity = StringEntity("[" + imageBitmap + "]")
-        request.setEntity(reqEntity)
+        request.setEntity(FileEntity(file, "application/octet-stream"))
 
         val response = httpclient.execute(request)
         val operationLocation = response.getHeaders("Operation-Location")[0]
         val urlString = operationLocation.elements[0].name
-
         return urlString
     }
 
     private fun makeRequest(urlString: String): String {
+        if(urlString == "") {
+            return ""
+        }
         val builder = URIBuilder(urlString)
         val uri = builder.build()
         val newRequest = HttpGet(uri)

@@ -5,12 +5,16 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import android.widget.SearchView
 import android.widget.TextView
 import com.example.bookscanner.R
 import com.example.bookscanner.Services.OCR
-import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
+import java.io.BufferedOutputStream
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
@@ -75,24 +79,32 @@ class MainActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            val imageBitmap = data?.extras?.get("data") as Bitmap
 
-            val stream = ByteArrayOutputStream()
-            imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
-            val byteArray = stream.toByteArray()
+          try {
+              val imageBitmap = data?.extras?.get("data") as Bitmap
 
-            val text = getTextFromPhoto(byteArray)
-            startSearchActivity(text)
+              val file = File(this.getCacheDir(), "photo.jpg")
+              file.createNewFile()
+              val os = BufferedOutputStream(FileOutputStream(file))
+              imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, os)
+              os.flush()
+              os.close()
+
+              val text = getTextFromPhoto(file)
+              startSearchActivity(text)
+          }catch (e:Exception) {
+              e.printStackTrace()
+          }
         }
     }
 
-    private fun getTextFromPhoto(imageBitmap: ByteArray): String {
+    private fun getTextFromPhoto(file: File): String {
         val ocr = OCR()
-        val list = ocr.getOcr(imageBitmap)
+        val list = ocr.getOcr(file)
         if (list == null) return ""
 
         val text = StringBuilder("")
-        val length = if (list.size > 3) 1 else list.size
+        val length = if (list.size > 4) 1 else list.size-1
         for (i in 0..length)
             text.append(list[i]).append(" ")
 

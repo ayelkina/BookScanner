@@ -47,7 +47,7 @@ class LibraryActivity : AppCompatActivity() {
             val id = cursor.getString(cursor.getColumnIndex(DataBaseHelper.ID))
             val title = cursor.getString(cursor.getColumnIndex(DataBaseHelper.TITLE))
             val author = cursor.getString(cursor.getColumnIndex(DataBaseHelper.AUTHOR))
-            allBooks.add(Book(id, title, author, null, null))
+            allBooks.add(Book(id, title, author, null, ""))
         }
         return allBooks
     }

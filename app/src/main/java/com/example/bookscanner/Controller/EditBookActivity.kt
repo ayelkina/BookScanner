@@ -57,7 +57,7 @@ class EditBookActivity : AppCompatActivity() {
     private fun updateBook(dbHandler: DataBaseHelper) {
         val title = findViewById<EditText>(R.id.titleText).text.toString()
         val author = findViewById<EditText>(R.id.authorText).text.toString()
-        val book = Book(id!!, title, author, null, null)
+        val book = Book(id!!, title, author, null, "")
         dbHandler.update(book)
     }
 

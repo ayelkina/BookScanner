@@ -5,7 +5,8 @@ class Book {
     var title: String = ""
     var author: String = ""
     var rating: String? = null
-    var apiId: String? = null
+    var apiId: String = ""
+    var description: String =""
 
     constructor(title: String, author: String)  {
         this.title = title
@@ -14,7 +15,7 @@ class Book {
 
     constructor()
 
-    constructor(dbId: String, title: String, author: String, rating: String?, id: String?) {
+    constructor(dbId: String, title: String, author: String, rating: String?, id: String) {
         this.dbId = dbId
         this.title = title
         this.author = author

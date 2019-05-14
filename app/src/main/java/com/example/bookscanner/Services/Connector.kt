@@ -82,8 +82,9 @@ class Connector {
                     } else if (tagname.equals("name")) {
                         book?.author = text
                     } else if (tagname.equals("id")) {
-                            book?.apiId = text
-                        Log.i("Id", text)
+                        val id = text
+                        book?.apiId = id
+//                        book?.description = getBookInfo(id)
                     } else if (tagname.equals("average_rating")) {
                         book?.rating = text
                     }
@@ -98,14 +99,24 @@ class Connector {
         return foundBooks
     }
 
-     fun getBookInfo(id: String): String? {
+     fun getBookInfo(id: String): String? = runBlocking {
          val url = StringBuilder(bookInfoUrl)
          val urlString = url.append(id).append(".xml").append(key).toString()
 
-         val stream = downloadUrl(urlString)
-         return parseBookInfo(stream)
+         val stream = GlobalScope.async { downloadUrl(urlString)}
+         parseBookInfo(stream.await())
 
      }
+
+  /*  fun getBookInfo(id: String): String  {
+        val url = StringBuilder(bookInfoUrl)
+        val urlString = url.append(id).append(".xml").append(key).toString()
+
+        val stream = downloadUrl(urlString)
+        val desc = parseBookInfo(stream)
+
+        return if(desc != null)desc else ""
+    }*/
 
     private fun parseBookInfo(inputStream: InputStream?): String? {
         var description = ""
