@@ -13,8 +13,3 @@ Urządzenia peryferyjne:
 Zewnętrzne usługi:
 - API rozpoznawania tekstu (Computer Vision API - v2.0 Recognize Text) 
 - API internetowej biblioteki (goodReads)
-
-TODO:
-- Rozpoznawanie tekstu z bitmap zdjęcia (na ten moment rozpoznaje się zahardkodowany obraz okładki z https)
-- Refaktoryzacja (zastosowanie wzorcu MVVM)
-- Ulepszenie UI/UX
